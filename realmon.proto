@@ -1,0 +1,38 @@
+package spotify.realmon;
+
+message Report {
+	optional int32 frequency = 1;
+	optional int32 timeout = 2;
+	optional string service = 3;
+	optional bytes uuid = 4;
+	optional string status_url = 5;
+	optional Runtime runtime = 6;
+}
+
+message Runtime {
+	optional string platform = 1;
+	optional string release = 2;
+	optional string version = 3;
+	optional int32 num_cpus = 4;
+	repeated float cpu_percent = 5;
+	optional CpuPercent cpu_times_percent = 6;
+	optional Memory memory = 7;
+}
+
+message CpuPercent {
+	optional float user = 1;
+	optional float nice = 2;
+	optional float system = 3;
+	optional float idle = 4;
+}
+
+message Memory {
+	optional int64 total = 1;
+	optional int64 available = 2;
+	optional float percent = 3;
+	optional int64 used = 4;
+	optional int64 free = 5;
+	optional int64 active = 6;
+	optional int64 inactive = 7;
+	optional int64 wired = 8;
+}

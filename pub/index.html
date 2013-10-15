@@ -1,0 +1,31 @@
+</pre>
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Realtime monitoring</title>
+ <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+ <script type='text/javascript' src="http://ci.angularjs.org/job/angular.js-angular-master/ws/build/angular.js"></script>
+</head>
+<body ng-app>
+ <div ng:controller="Main" class="pure-u"> 	
+Value {{data}}
+</div>
+ 
+<script type='text/javascript'>//<![CDATA[
+ 
+var source = new EventSource('/events');
+ 
+function Main($scope, $window) {
+ source.addEventListener('realmon', function(e) {
+ $scope.$apply(function() {
+ $scope.data = e.data;
+ });
+ },false);
+}
+//]]>
+</script>
+</body>
+</html>
+<pre>
